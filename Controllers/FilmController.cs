@@ -24,6 +24,7 @@ namespace FilmApi.Controllers
                 .Include(f => f.FilmRealisateurs).ThenInclude(fr => fr.Realisateur)
                 .Include(f => f.FilmActeurs).ThenInclude(fa => fa.Acteur)
                 .Include(f => f.FilmGenres).ThenInclude(fg => fg.Genre)
+                .Take(10)
                 .ToList();
 
             var filmDtos = films.Select(film => new
