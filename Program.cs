@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
-    .AddUserSecrets<Program>() // Specify the entry point class here
+    .AddUserSecrets<Program>() 
     .Build();
 
 // Add database context as a service
@@ -19,7 +19,7 @@ string connectionString = builder.Configuration.GetConnectionString("DefaultConn
 builder.Services.AddDbContext<FilmContext>(options => options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 11))));
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
